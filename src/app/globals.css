@@ -1,0 +1,138 @@
+@import "tailwindcss";
+
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+  }
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: Arial, Helvetica, sans-serif;
+  overflow-x: hidden;
+}
+
+html {
+  overflow-x: hidden;
+}
+
+/* Brands Carousel Animation */
+@keyframes scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-scroll {
+  animation: scroll 30s linear infinite;
+}
+
+.animate-scroll:hover {
+  animation-play-state: paused;
+}
+
+/* Enable touch scrolling on mobile for brands carousel */
+@media (max-width: 767px) {
+  .animate-scroll {
+    animation: none;
+  }
+  
+  .overflow-x-auto {
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+  
+  .overflow-x-auto::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+/* Splide Carousel Styles - Responsive */
+.splide__slide {
+  display: flex;
+  justify-content: center;
+  width: 100% !important;
+  min-width: 100% !important;
+  max-width: 100% !important;
+}
+
+.splide__list {
+  display: flex;
+  align-items: stretch;
+}
+
+/* Desktop: 3 cards per row */
+@media (min-width: 1024px) {
+  .splide__slide {
+    width: calc((100% - 3rem) / 3) !important;
+    min-width: calc((100% - 3rem) / 3) !important;
+    max-width: calc((100% - 3rem) / 3) !important;
+  }
+}
+
+/* Tablet: 2 cards per row */
+@media (min-width: 768px) and (max-width: 1023px) {
+  .splide__slide {
+    width: calc((100% - 1.5rem) / 2) !important;
+    min-width: calc((100% - 1.5rem) / 2) !important;
+    max-width: calc((100% - 1.5rem) / 2) !important;
+  }
+}
+
+/* Mobile: 1 card per row */
+@media (max-width: 767px) {
+  .splide__slide {
+    width: 100% !important;
+    min-width: 100% !important;
+    max-width: 100% !important;
+  }
+}
+
+/* Prevent horizontal overflow on mobile */
+* {
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+img, video {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Splide Carousel Styles */
+.splide__slide {
+  display: flex;
+  justify-content: center;
+}
+
+.splide__list {
+  display: flex;
+  align-items: stretch;
+}
+
+/* Ensure ChooseUs carousel images have same height on mobile */
+@media (max-width: 640px) {
+  .splide__slide > div.relative {
+    height: 250px !important;
+    min-height: 250px !important;
+    max-height: 250px !important;
+  }
+}
